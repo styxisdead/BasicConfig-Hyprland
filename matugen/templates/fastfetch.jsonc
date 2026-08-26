@@ -1,0 +1,102 @@
+{
+    "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+
+    "logo": {
+        "type": "builtin",
+        "source": "arch",
+        "padding": {
+            "right": 3
+        },
+        "color": {
+            "1": "{{ colors.primary.default.hex }}",
+            "2": "{{ colors.secondary.default.hex }}",
+            "3": "{{ colors.tertiary.default.hex }}",
+            "4": "{{ colors.primary_container.default.hex }}",
+            "5": "{{ colors.on_background.default.hex }}",
+            "6": "{{ colors.secondary_container.default.hex }}"
+        }
+    },
+
+    "display": {
+        "separator": "  "
+    },
+
+    "modules": [
+        {
+            "type": "title",
+            "color": {
+                "user": "{{ colors.primary.default.hex }}",
+                "at": "{{ colors.secondary.default.hex }}",
+                "host": "{{ colors.tertiary.default.hex }}"
+            }
+        },
+
+        {
+            "type": "separator",
+            "string": "────────────────────────"
+        },
+
+        {
+            "type": "os",
+            "key": "OS",
+            "keyColor": "{{ colors.primary.default.hex }}"
+        },
+        {
+            "type": "host",
+            "key": "Host",
+            "keyColor": "{{ colors.secondary.default.hex }}"
+        },
+        {
+            "type": "kernel",
+            "key": "Kernel",
+            "keyColor": "{{ colors.tertiary.default.hex }}"
+        },
+        {
+            "type": "uptime",
+            "key": "Uptime",
+            "keyColor": "{{ colors.primary.default.hex }}"
+        },
+        {
+            "type": "packages",
+            "key": "Packages",
+            "keyColor": "{{ colors.secondary.default.hex }}"
+        },
+        {
+            "type": "shell",
+            "key": "Shell",
+            "keyColor": "{{ colors.tertiary.default.hex }}"
+        },
+        {
+            "type": "wm",
+            "key": "WM",
+            "keyColor": "{{ colors.primary.default.hex }}"
+        },
+        {
+            "type": "terminal",
+            "key": "Terminal",
+            "keyColor": "{{ colors.secondary.default.hex }}"
+        },
+        {
+            "type": "cpu",
+            "key": "CPU",
+            "keyColor": "{{ colors.tertiary.default.hex }}"
+        },
+        {
+            "type": "gpu",
+            "key": "GPU",
+            "keyColor": "{{ colors.primary.default.hex }}"
+        },
+        {
+            "type": "memory",
+            "key": "Memory",
+            "keyColor": "{{ colors.secondary.default.hex }}"
+        },
+
+        "break",
+
+        {
+            "type": "colors",
+            "symbol": "circle"
+        }
+    ]
+}

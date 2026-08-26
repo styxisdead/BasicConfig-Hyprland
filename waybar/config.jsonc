@@ -1,0 +1,123 @@
+{
+    "layer": "top",
+    "position": "top",
+
+    "height": 38,
+
+    "margin-top": 10,
+    "margin-left": 12,
+    "margin-right": 12,
+
+    "modules-left": [
+        "custom/launcher",
+        "hyprland/workspaces",
+        "wlr/taskbar"
+    ],
+
+    "modules-center": [
+        "clock"
+    ],
+
+    "modules-right": [
+        "mpris",
+        "cpu",
+        "memory",
+        "pulseaudio",
+        "network",
+        "tray"
+    ],
+
+    "custom/launcher": {
+        "format": "󰣇",
+        "tooltip": "Applications",
+        "on-click": "fuzzel"
+    },
+
+    "hyprland/workspaces": {
+        "format": "{name}",
+        "on-click": "activate",
+        "sort-by-number": true
+    },
+
+    "wlr/taskbar": {
+        "format": "{icon}",
+        "icon-size": 20,
+        "tooltip-format": "{title}",
+        "on-click": "activate",
+        "on-click-middle": "close",
+        "ignore-list": [
+            "waybar"
+        ]
+    },
+
+    "clock": {
+        "format": "󰥔  {:%I:%M %p}",
+        "format-alt": "󰃭  {:%A, %B %d, %Y}",
+        "tooltip": false
+    },
+
+    "cpu": {
+        "format": "󰻠  {usage}%",
+        "tooltip": true,
+        "on-click": "kitty -e btop"
+    },
+
+    "memory": {
+        "format": "󰍛  {percentage}%",
+        "tooltip": true,
+        "on-click": "kitty -e btop"
+    },
+
+    "mpris": {
+    "player": "spotify_player",
+    "format": "  {artist} — {title}",
+    "format-paused": "  {artist} — {title}",
+    "max-length": 35,
+    "tooltip": true,
+    "tooltip-format": "{artist} — {title}\n{album}",
+    "on-click": "playerctl -p spotify_player play-pause",
+    "on-click-middle": "playerctl -p spotify_player previous",
+    "on-click-right": "playerctl -p spotify_player next",
+    "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+",
+    "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+    },
+
+    "pulseaudio": {
+        "format": "{icon}  {volume}%",
+        "format-bluetooth": "{icon}  {volume}%",
+        "format-bluetooth-muted": "󰂲  Muted",
+        "format-muted": "󰖁  Muted",
+
+        "format-icons": {
+            "headphone": "󰋋",
+            "hands-free": "󰋎",
+            "headset": "󰋎",
+            "phone": "󰏲",
+            "portable": "󰦧",
+            "car": "󰦧",
+            "default": [
+                "󰕿",
+                "󰖀",
+                "󰕾"
+            ]
+        },
+
+        "scroll-step": 5,
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "on-click-right": "pavucontrol",
+        "tooltip-format": "{desc}\nVolume: {volume}%"
+    },
+
+    "network": {
+        "format-wifi": "󰖩  {essid}",
+        "format-ethernet": "󰈀  Connected",
+        "format-disconnected": "󰖪  Offline",
+        "tooltip-format": "{ifname}\n{ipaddr}/{cidr}"
+    },
+
+    "tray": {
+        "icon-size": 18,
+        "spacing": 8,
+        "show-passive-items": true
+    }
+}

@@ -1,0 +1,64 @@
+* {
+    background: {{colors.background.default.hex}}ee;
+    foreground: {{colors.on_background.default.hex}}ff;
+    accent: {{colors.primary.default.hex}}ff;
+    selected: {{colors.primary.default.hex}}33;
+}
+
+window {
+    background-color: @background;
+    border: 2px;
+    border-color: @accent;
+    border-radius: 18px;
+    width: 80%;
+    height: 75%;
+}
+
+mainbox {
+    background-color: @background;
+    padding: 20px;
+}
+
+inputbar {
+    background-color: @background;
+    border: 1px;
+    border-color: @accent;
+    border-radius: 12px;
+    padding: 10px;
+}
+
+prompt {
+    text-color: @accent;
+}
+
+entry {
+    text-color: @foreground;
+}
+
+listview {
+    background-color: @background;
+    columns: 4;
+    lines: 3;
+    spacing: 14px;
+}
+
+element {
+    background-color: transparent;
+    padding: 8px;
+}
+
+element-icon {
+    size: 256px;
+}
+
+element-text {
+    text-color: @foreground;
+    horizontal-align: 0.5;
+    padding: 8px;
+}
+
+element selected {
+    background-color: @selected;
+    border: 2px;
+    border-color: @accent;
+}

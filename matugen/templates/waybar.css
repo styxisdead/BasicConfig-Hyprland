@@ -1,0 +1,6 @@
+@define-color background {{ colors.background.default.hex }};
+@define-color foreground {{ colors.on_background.default.hex }};
+@define-color accent {{ colors.primary.default.hex }};
+@define-color accent2 {{ colors.secondary.default.hex }};
+@define-color surface {{ colors.surface.default.hex }};
+@define-color surface_variant {{ colors.surface_variant.default.hex }};

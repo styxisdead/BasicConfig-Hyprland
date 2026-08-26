@@ -1,0 +1,102 @@
+{
+    "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+
+    "logo": {
+        "type": "builtin",
+        "source": "arch",
+        "padding": {
+            "right": 3
+        },
+        "color": {
+            "1": "#85d2e8",
+            "2": "#b2cbd3",
+            "3": "#c0c4eb",
+            "4": "#004e5d",
+            "5": "#dee3e6",
+            "6": "#344a51"
+        }
+    },
+
+    "display": {
+        "separator": "  "
+    },
+
+    "modules": [
+        {
+            "type": "title",
+            "color": {
+                "user": "#85d2e8",
+                "at": "#b2cbd3",
+                "host": "#c0c4eb"
+            }
+        },
+
+        {
+            "type": "separator",
+            "string": "────────────────────────"
+        },
+
+        {
+            "type": "os",
+            "key": "OS",
+            "keyColor": "#85d2e8"
+        },
+        {
+            "type": "host",
+            "key": "Host",
+            "keyColor": "#b2cbd3"
+        },
+        {
+            "type": "kernel",
+            "key": "Kernel",
+            "keyColor": "#c0c4eb"
+        },
+        {
+            "type": "uptime",
+            "key": "Uptime",
+            "keyColor": "#85d2e8"
+        },
+        {
+            "type": "packages",
+            "key": "Packages",
+            "keyColor": "#b2cbd3"
+        },
+        {
+            "type": "shell",
+            "key": "Shell",
+            "keyColor": "#c0c4eb"
+        },
+        {
+            "type": "wm",
+            "key": "WM",
+            "keyColor": "#85d2e8"
+        },
+        {
+            "type": "terminal",
+            "key": "Terminal",
+            "keyColor": "#b2cbd3"
+        },
+        {
+            "type": "cpu",
+            "key": "CPU",
+            "keyColor": "#c0c4eb"
+        },
+        {
+            "type": "gpu",
+            "key": "GPU",
+            "keyColor": "#85d2e8"
+        },
+        {
+            "type": "memory",
+            "key": "Memory",
+            "keyColor": "#b2cbd3"
+        },
+
+        "break",
+
+        {
+            "type": "colors",
+            "symbol": "circle"
+        }
+    ]
+}

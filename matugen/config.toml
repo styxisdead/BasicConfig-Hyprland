@@ -1,0 +1,34 @@
+[config]
+reload_apps = false
+
+[templates.hyprland]
+input_path = '~/.config/matugen/templates/hyprland-colors.lua'
+output_path = '~/.config/hypr/matugen-colors.lua'
+post_hook = 'hyprctl reload'
+
+[templates.waybar]
+input_path = '~/.config/matugen/templates/waybar.css'
+output_path = '~/.config/waybar/matugen-colors.css'
+post_hook = 'pkill -SIGUSR2 waybar'
+
+[templates.kitty]
+input_path = '~/.config/matugen/templates/kitty.conf'
+output_path = '~/.config/kitty/matugen-colors.conf'
+post_hook = 'pkill -SIGUSR1 kitty'
+
+[templates.fastfetch]
+input_path = '~/.config/matugen/templates/fastfetch.jsonc'
+output_path = '~/.config/fastfetch/config.jsonc'
+
+[templates.fuzzel]
+input_path = '~/.config/matugen/templates/fuzzel.ini'
+output_path = '~/.config/fuzzel/fuzzel.ini'
+
+[templates.mako]
+input_path = '~/.config/matugen/templates/mako.conf'
+output_path = '~/.config/mako/config'
+post_hook = 'makoctl reload'
+
+[templates.rofi-wallpaper]
+input_path = '~/.config/matugen/templates/rofi-wallpaper.rasi'
+output_path = '~/.config/rofi/wallpaper.rasi'
