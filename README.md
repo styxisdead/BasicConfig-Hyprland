@@ -14,6 +14,6 @@ Thanks for visiting!
 
 
 #EXAMPLE PHOTOS:
-/home/viixea/Pictures/Screenshots/2026-08-25_16-20-39.png
-/home/viixea/Pictures/Screenshots/2026-08-25_22-30-23.png
-/home/viixea/Pictures/Screenshots/2026-08-26_02-14-26.png
+![/home/viixea/Pictures/Screenshots/2026-08-25_16-20-39.png]
+![/home/viixea/Pictures/Screenshots/2026-08-25_22-30-23.png]
+![/home/viixea/Pictures/Screenshots/2026-08-26_02-14-26.png]
