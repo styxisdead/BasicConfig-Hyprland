@@ -4,7 +4,7 @@ A simple Hyprland configuration for Arch Linux.
 
 ## Requirements
 
-This configuration is intended for **Arch Linux** or an Arch-based system.
+This configuration is intended for **Arch Linux only** or an Arch-based system.
 
 You will need:
 
@@ -12,14 +12,31 @@ You will need:
 - An internet connection
 - `sudo`
 - `git`
+- `fish`
+- `kitty`
+- `fastfetch`
+- `rofi`
+- `waybar`
+- `fuzzel`
+- `mako`
+- `matugen`
+- `hyprpaper`
+- `hyprglass plugin`
+- `btop`
 
 ## Installation
 
-### 1. Install Git
+### 1. Install necessary packages
 
 ```bash
 sudo pacman -S git
 ```
+```bash
+sudo pacman -S kitty fish fastfetch rofi waybar fuzzel mako matugen hyprpaper btop
+```
+
+
+NOTE: the installer has packages commented out for debugging purposes. I will fix the install script when I have time.
 
 ### 2. Clone the repository
 
@@ -49,17 +66,13 @@ chmod +x install.sh
 
 The installer will:
 
-1. Update your system.
-2. Install the required packages.
-3. Back up existing configuration files.
-4. Install the BasicConfig-Hyprland configuration.
-5. Make Hyprland scripts executable.
-6. Ask whether you want to use Fish as your default shell.
-7. Enable NetworkManager.
-8. Enable Bluetooth.
-9. Enable PipeWire and WirePlumber.
-10. Initialize Matugen with the included wallpaper.
-11. Reboot the system.
+1. Install the BasicConfig-Hyprland configuration.
+2. Make Hyprland scripts executable.
+3. Enable NetworkManager.
+4. Enable Bluetooth.
+5. Enable PipeWire and WirePlumber.
+6. Initialize Matugen with the included wallpaper.
+7. Reboot the system.
 
 ## Configuration Backup
 
