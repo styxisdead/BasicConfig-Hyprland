@@ -18,34 +18,59 @@ echo "Installing system dependencies..."
 sudo pacman -Syu --needed "${PACKAGES[@]}"
 
 mkdir -p "$HOME/.config"
-BACKUP_DIR="$HOMEA/.config/hypr_backup_$(date +%Y%m%d_%H%M%S)"
+BACKUP_DIR="$HOME/.config/hypr_backup_$(date +%Y%m%d_%H%M%S)"
 
 FOLDERS=(
-    hyprland waybar rofi kitty hyprpaper mako nemo matugen hyprpolkitagent 
-    pulseaudio grim slurp wl-clipboard grimblast systray ttf-font-awesome 
-    ttf-jet-brains-mono qt5-wayland qt6-wayland xdg-desktop-portal-hyprland
-    btop cava spotify_player fastfetch fuzzel gtk-3.0 gtk-4.0 firefox qt6ct 
+    hyprland 
+    waybar 
+    rofi 
+    kitty 
+    hyprpaper 
+    mako 
+    nemo 
+    matugen 
+    hyprpolkitagent 
+    pulseaudio 
+    grim 
+    slurp 
+    wl-clipboard 
+    grimblast 
+    systray 
+    ttf-font-awesome 
+    ttf-jet-brains-mono 
+    qt5-wayland 
+    qt6-wayland 
+    xdg-desktop-portal-hyprland
+    btop 
+    cava 
+    spotify_player 
+    fastfetch 
+    fuzzel 
+    gtk-3.0 
+    gtk-4.0 
+    firefox 
+    qt6ct 
 )
 
 echo "Backing up existing configurations to $BACKUP_DIR..."
 for folder in "${FOLDERS[@]}"; do
-    if [-d "$HOME/.config/$folder"];
+    if [ -d "$HOME/.config/$folder" ]; then
         mkdir -p "$BACKUP_DIR"
-        mv "$HOME/.config/$folder" "$BACKUP_DIR"
+        mv "$HOME/.config/$folder" "$BACKUP_DIR/"
     fi
 done
 
 echo "Deploying new dotfiles, hang tight...!"
 cp -r dotfiles/* "$HOME/.config"
 
-if [-d "$HOME/.config/hypr/scripts"]; then
+if [ -d "$HOME/.config/hypr/scripts" ]; then
     chmod +x "$HOME/.config/hypr/scripts"/*
 fi
 
 echo ""
 read -p "Do you want to set fish as your defauly system shell? (This is reccommended for beginner users) [y/N]: " -n 1 -r
 echo ""
-if [[$REPLY =~ ^[Yy]$]]; then
+if [[ $REPLY =~ ^[Yy]$ ]]; then
     FISH_PATH=$(which fish)
     if ! grep -q "$FISH_PATH" /etc/shells; then
         echo "Adding fish to /etc/shells..."
@@ -59,10 +84,10 @@ if pidof systemd >/dev/null; then
     echo "Systemd active, enabling background services now..."
     sudo systemctl enable --now NetworkManager.service
     sudo systemctl enable --now bluetooth.service
-    sudo systemctl enable --now pipwire.service pipewire-pulse.service wireplumber.service
+    sudo systemctl enable --now pipewire.service pipewire-pulse.service wireplumber.service
 fi
 
-if [-f "$HOME/.config/hypr/Wallpapers/Moon.png"]; then
+if [ -f "$HOME/.config/hypr/Wallpapers/Moon.png" ]; then
     echo "Initializing themes..."
     matugen image "$HOME/.config/hypr/Wallpapers/Moon.png"
 fi
