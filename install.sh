@@ -1,99 +1,223 @@
 #!/bin/bash
-set -e
+set -euo pipefail
+
+# ============================================================
+# BasicConfig-Hyprland Installer
+# ============================================================
 
 PACKAGES=(
-    hyprland waybar rofi kitty hyprpaper mako nemo matugen hyprpolkitagent 
-    pulseaudio grim slurp wl-clipboard grimblast systray ttf-font-awesome 
-    ttf-jet-brains-mono qt5-wayland qt6-wayland xdg-desktop-portal-hyprland
-    btop cava spotify_player fastfetch fuzzel gtk-3.0 gtk-4.0 firefox qt6ct 
+    hyprland
+    waybar
+    rofi
+    kitty
+    hyprpaper
+    mako
+    nemo
+    matugen
+    hyprpolkitagent
+
+    pipewire
+    pipewire-pulse
+    wireplumber
+
+    grim
+    slurp
+    wl-clipboard
+
+    ttf-font-awesome
+    ttf-jet-brains-mono
+
+    qt5-wayland
+    qt6-wayland
+    xdg-desktop-portal-hyprland
+
+    btop
+    cava
+    spotify-player
+    fastfetch
+    fuzzel
+
+    gtk3
+    gtk4
+    firefox
+    qt6ct
+
+    fish
 )
+
+CONFIG_DIR="$HOME/.config"
+BACKUP_DIR="$HOME/hypr_backup_$(date +%Y%m%d_%H%M%S)"
 
 echo "==========================================="
 echo "=== INSTALLING BASIC HYPRLAND CONFIG... ==="
 echo "==========================================="
+echo
+echo "WARNING:"
+echo "This is a simple configuration installer."
+echo "Some additional packages or configuration may be required."
+echo
 
-echo "WARNING: PLEASE NOTE THIS IS NOT A FULLY FLESHED INSTALL SCRIPT. SOME PACKAGES MAY BE MISSING. THIS IS JUST A SIMPLE CONFIGURATION."
+# ------------------------------------------------------------
+# Make sure the script is being run from the repository
+# ------------------------------------------------------------
+
+if [ ! -d "./dotfiles" ]; then
+    echo "ERROR: dotfiles directory not found."
+    echo
+    echo "Please run this script from the root of the"
+    echo "BasicConfig-Hyprland repository."
+    exit 1
+fi
+
+# ------------------------------------------------------------
+# Install system dependencies
+# ------------------------------------------------------------
 
 echo "Installing system dependencies..."
 sudo pacman -Syu --needed "${PACKAGES[@]}"
 
-mkdir -p "$HOME/.config"
-BACKUP_DIR="$HOME/.config/hypr_backup_$(date +%Y%m%d_%H%M%S)"
+# ------------------------------------------------------------
+# Create configuration directory
+# ------------------------------------------------------------
+
+mkdir -p "$CONFIG_DIR"
+
+# ------------------------------------------------------------
+# Configuration directories to back up
+# ------------------------------------------------------------
 
 FOLDERS=(
-    hyprland 
-    waybar 
-    rofi 
-    kitty 
-    hyprpaper 
-    mako 
-    nemo 
-    matugen 
-    hyprpolkitagent 
-    pulseaudio 
-    grim 
-    slurp 
-    wl-clipboard 
-    grimblast 
-    systray 
-    ttf-font-awesome 
-    ttf-jet-brains-mono 
-    qt5-wayland 
-    qt6-wayland 
-    xdg-desktop-portal-hyprland
-    btop 
-    cava 
-    spotify_player 
-    fastfetch 
-    fuzzel 
-    gtk-3.0 
-    gtk-4.0 
-    firefox 
-    qt6ct 
+    hypr
+    waybar
+    rofi
+    kitty
+    hyprpaper
+    mako
+    nemo
+    matugen
+    btop
+    cava
+    spotify-player
+    fastfetch
+    fuzzel
+    gtk-3.0
+    gtk-4.0
+    firefox
+    qt6ct
 )
 
-echo "Backing up existing configurations to $BACKUP_DIR..."
+# ------------------------------------------------------------
+# Back up existing configurations
+# ------------------------------------------------------------
+
+echo
+echo "Checking for existing configurations..."
+
+BACKUP_CREATED=false
+
 for folder in "${FOLDERS[@]}"; do
-    if [ -d "$HOME/.config/$folder" ]; then
-        mkdir -p "$BACKUP_DIR"
-        mv "$HOME/.config/$folder" "$BACKUP_DIR/"
+    if [ -d "$CONFIG_DIR/$folder" ]; then
+
+        if [ "$BACKUP_CREATED" = false ]; then
+            mkdir -p "$BACKUP_DIR"
+            BACKUP_CREATED=true
+        fi
+
+        echo "Backing up ~/.config/$folder"
+        mv "$CONFIG_DIR/$folder" "$BACKUP_DIR/"
     fi
 done
 
-echo "Deploying new dotfiles, hang tight...!"
-cp -r dotfiles/* "$HOME/.config"
-
-if [ -d "$HOME/.config/hypr/scripts" ]; then
-    chmod +x "$HOME/.config/hypr/scripts"/*
+if [ "$BACKUP_CREATED" = true ]; then
+    echo
+    echo "Existing configurations backed up to:"
+    echo "$BACKUP_DIR"
+else
+    echo "No existing configurations found."
 fi
 
-echo ""
-read -p "Do you want to set fish as your defauly system shell? (This is reccommended for beginner users) [y/N]: " -n 1 -r
-echo ""
-if [[ $REPLY =~ ^[Yy]$ ]]; then
-    FISH_PATH=$(which fish)
-    if ! grep -q "$FISH_PATH" /etc/shells; then
-        echo "Adding fish to /etc/shells..."
-        echo "$FISH_PATH" | sudo tee -a /etc/shells
+# ------------------------------------------------------------
+# Deploy dotfiles
+# ------------------------------------------------------------
+
+echo
+echo "Deploying BasicConfig-Hyprland configuration..."
+
+cp -r dotfiles/. "$CONFIG_DIR/"
+
+# ------------------------------------------------------------
+# Make Hyprland scripts executable
+# ------------------------------------------------------------
+
+if [ -d "$CONFIG_DIR/hypr/scripts" ]; then
+    echo "Making Hyprland scripts executable..."
+    find "$CONFIG_DIR/hypr/scripts" -type f -exec chmod +x {} \;
+fi
+
+# ------------------------------------------------------------
+# Fish shell
+# ------------------------------------------------------------
+
+echo
+read -r -p \
+"Do you want to set Fish as your default shell? [y/N]: " REPLY
+
+echo
+
+if [[ "$REPLY" =~ ^[Yy]$ ]]; then
+
+    FISH_PATH="$(command -v fish)"
+
+    if [ -z "$FISH_PATH" ]; then
+        echo "ERROR: Fish was not found."
+        exit 1
     fi
-    echo "Setting fish as your default shell..."
+
+    if ! grep -Fxq "$FISH_PATH" /etc/shells; then
+        echo "Adding Fish to /etc/shells..."
+        echo "$FISH_PATH" | sudo tee -a /etc/shells > /dev/null
+    fi
+
+    echo "Setting Fish as your default shell..."
     chsh -s "$FISH_PATH"
+
 fi
 
-if pidof systemd >/dev/null; then
-    echo "Systemd active, enabling background services now..."
-    sudo systemctl enable --now NetworkManager.service
+# ------------------------------------------------------------
+# Enable system services
+# ------------------------------------------------------------
+
+echo
+echo "Enabling system services..."
+
+sudo systemctl enable --now NetworkManager.service
+
+if systemctl list-unit-files bluetooth.service >/dev/null 2>&1; then
     sudo systemctl enable --now bluetooth.service
-    sudo systemctl enable --now pipewire.service pipewire-pulse.service wireplumber.service
 fi
 
-if [ -f "$HOME/.config/hypr/Wallpapers/Moon.png" ]; then
-    echo "Initializing themes..."
-    matugen image "$HOME/.config/hypr/Wallpapers/Moon.png"
+# ------------------------------------------------------------
+# Initialize Matugen
+# ------------------------------------------------------------
+
+WALLPAPER="$CONFIG_DIR/hypr/Wallpapers/Moon.png"
+
+if [ -f "$WALLPAPER" ]; then
+    echo
+    echo "Initializing Matugen..."
+    matugen image "$WALLPAPER"
 fi
 
+# ------------------------------------------------------------
+# Finish
+# ------------------------------------------------------------
+
+echo
 echo "==============================================="
 echo "=== INSTALLATION COMPLETE. REBOOTING NOW... ==="
 echo "==============================================="
+echo
+
+sleep 3
 
 sudo systemctl reboot
