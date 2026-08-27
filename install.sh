@@ -47,7 +47,7 @@ BACKUP_DIR="$HOME/hypr_backup_$(date +%Y%m%d_%H%M%S)"
 #    qt6ct
 
 #    fish
-)
+# )
 
 echo "==========================================="
 echo "=== INSTALLING BASIC HYPRLAND CONFIG... ==="
