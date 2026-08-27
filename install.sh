@@ -5,6 +5,10 @@ set -euo pipefail
 # BasicConfig-Hyprland Installer
 # ============================================================
 
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+CONFIG_DIR="$HOME/.config"
+BACKUP_DIR="$HOME/hypr_backup_$(date +%Y%m%d_%H%M%S)"
+
 PACKAGES=(
     hyprland
     waybar
@@ -45,39 +49,32 @@ PACKAGES=(
     fish
 )
 
-CONFIG_DIR="$HOME/.config"
-BACKUP_DIR="$HOME/hypr_backup_$(date +%Y%m%d_%H%M%S)"
-
 echo "==========================================="
 echo "=== INSTALLING BASIC HYPRLAND CONFIG... ==="
 echo "==========================================="
 echo
-echo "WARNING:"
-echo "This is a simple configuration installer."
-echo "Some additional packages or configuration may be required."
-echo
 
 # ------------------------------------------------------------
-# Make sure the script is being run from the repository
+# Check that the script is inside the dotfiles directory
 # ------------------------------------------------------------
 
-if [ ! -d "./dotfiles" ]; then
-    echo "ERROR: dotfiles directory not found."
+if [ ! -d "$SCRIPT_DIR/hypr" ]; then
+    echo "ERROR: Hyprland configuration was not found."
     echo
-    echo "Please run this script from the root of the"
-    echo "BasicConfig-Hyprland repository."
+    echo "Expected the dotfiles to be located beside install.sh."
     exit 1
 fi
 
 # ------------------------------------------------------------
-# Install system dependencies
+# Install packages
 # ------------------------------------------------------------
 
 echo "Installing system dependencies..."
+
 sudo pacman -Syu --needed "${PACKAGES[@]}"
 
 # ------------------------------------------------------------
-# Create configuration directory
+# Create ~/.config
 # ------------------------------------------------------------
 
 mkdir -p "$CONFIG_DIR"
@@ -143,7 +140,7 @@ fi
 echo
 echo "Deploying BasicConfig-Hyprland configuration..."
 
-cp -r dotfiles/. "$CONFIG_DIR/"
+cp -r "$SCRIPT_DIR/." "$CONFIG_DIR/"
 
 # ------------------------------------------------------------
 # Make Hyprland scripts executable
@@ -151,7 +148,10 @@ cp -r dotfiles/. "$CONFIG_DIR/"
 
 if [ -d "$CONFIG_DIR/hypr/scripts" ]; then
     echo "Making Hyprland scripts executable..."
-    find "$CONFIG_DIR/hypr/scripts" -type f -exec chmod +x {} \;
+
+    find "$CONFIG_DIR/hypr/scripts" \
+        -type f \
+        -exec chmod +x {} \;
 fi
 
 # ------------------------------------------------------------
@@ -159,8 +159,7 @@ fi
 # ------------------------------------------------------------
 
 echo
-read -r -p \
-"Do you want to set Fish as your default shell? [y/N]: " REPLY
+read -r -p "Do you want to set Fish as your default shell? [y/N]: " REPLY
 
 echo
 
@@ -180,7 +179,6 @@ if [[ "$REPLY" =~ ^[Yy]$ ]]; then
 
     echo "Setting Fish as your default shell..."
     chsh -s "$FISH_PATH"
-
 fi
 
 # ------------------------------------------------------------
