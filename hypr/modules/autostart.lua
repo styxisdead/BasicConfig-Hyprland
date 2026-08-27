@@ -1,4 +1,5 @@
 hl.on("hyprland.start", function()
-    exec_once("spotify_player --daemon")
-    exec_once("hyprpm enable hyprglass")
+    hl.exec_cmd("waybar")
+    hl.exec_cmd("hyprpm enable hyprglass")
+    hl.exec_cmd("hyprpaper")
 end)

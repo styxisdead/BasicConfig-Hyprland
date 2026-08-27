@@ -8,12 +8,12 @@
             "right": 3
         },
         "color": {
-            "1": "#85d2e8",
-            "2": "#b2cbd3",
-            "3": "#c0c4eb",
-            "4": "#004e5d",
-            "5": "#dee3e6",
-            "6": "#344a51"
+            "1": "#ffb1c1",
+            "2": "#e4bdc3",
+            "3": "#ecbe91",
+            "4": "#713343",
+            "5": "#efdee0",
+            "6": "#5b3f45"
         }
     },
 
@@ -25,9 +25,9 @@
         {
             "type": "title",
             "color": {
-                "user": "#85d2e8",
-                "at": "#b2cbd3",
-                "host": "#c0c4eb"
+                "user": "#ffb1c1",
+                "at": "#e4bdc3",
+                "host": "#ecbe91"
             }
         },
 
@@ -39,57 +39,57 @@
         {
             "type": "os",
             "key": "OS",
-            "keyColor": "#85d2e8"
+            "keyColor": "#ffb1c1"
         },
         {
             "type": "host",
             "key": "Host",
-            "keyColor": "#b2cbd3"
+            "keyColor": "#e4bdc3"
         },
         {
             "type": "kernel",
             "key": "Kernel",
-            "keyColor": "#c0c4eb"
+            "keyColor": "#ecbe91"
         },
         {
             "type": "uptime",
             "key": "Uptime",
-            "keyColor": "#85d2e8"
+            "keyColor": "#ffb1c1"
         },
         {
             "type": "packages",
             "key": "Packages",
-            "keyColor": "#b2cbd3"
+            "keyColor": "#e4bdc3"
         },
         {
             "type": "shell",
             "key": "Shell",
-            "keyColor": "#c0c4eb"
+            "keyColor": "#ecbe91"
         },
         {
             "type": "wm",
             "key": "WM",
-            "keyColor": "#85d2e8"
+            "keyColor": "#ffb1c1"
         },
         {
             "type": "terminal",
             "key": "Terminal",
-            "keyColor": "#b2cbd3"
+            "keyColor": "#e4bdc3"
         },
         {
             "type": "cpu",
             "key": "CPU",
-            "keyColor": "#c0c4eb"
+            "keyColor": "#ecbe91"
         },
         {
             "type": "gpu",
             "key": "GPU",
-            "keyColor": "#85d2e8"
+            "keyColor": "#ffb1c1"
         },
         {
             "type": "memory",
             "key": "Memory",
-            "keyColor": "#b2cbd3"
+            "keyColor": "#e4bdc3"
         },
 
         "break",

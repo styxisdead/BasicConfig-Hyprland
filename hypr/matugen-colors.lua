@@ -1,6 +1,6 @@
 return {
-    background = "#0f1416",
-    foreground = "#dee3e6",
-    accent = "#85d2e8",
-    accent2 = "#b2cbd3",
+    background = "#191113",
+    foreground = "#efdee0",
+    accent = "#ffb1c1",
+    accent2 = "#e4bdc3",
 }

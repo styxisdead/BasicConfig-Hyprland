@@ -1,7 +1,8 @@
-source /usr/share/cachyos-fish-config/cachyos-config.fish
+# KDE Qt theme
 set -gx QT_QPA_PLATFORMTHEME kde
-# overwrite greeting
-# potentially disabling fastfetch
-#function fish_greeting
-#    # smth smth
-#end
+
+# Terminal greetings
+function fish_greeting
+    fetch
+    fastfetch
+end

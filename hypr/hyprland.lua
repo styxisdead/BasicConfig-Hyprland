@@ -2,6 +2,7 @@
 ---- MONITORS ----
 ------------------
 require("modules/monitors")
+require("modules/cursor")
 ---------------------
 ---- MY PROGRAMS ----
 ---------------------
