@@ -158,28 +158,28 @@ fi
 # Fish shell
 # ------------------------------------------------------------
 
-# echo
-# read -r -p "Do you want to set Fish as your default shell? [y/N]: " REPLY
+ echo
+ read -r -p "Do you want to set Fish as your default shell? [y/N]: " REPLY
 
 echo
 
-# if [[ "$REPLY" =~ ^[Yy]$ ]]; then
+ if [[ "$REPLY" =~ ^[Yy]$ ]]; then
 
-#    FISH_PATH="$(command -v fish)"
+   FISH_PATH="$(command -v fish)"
 
-#    if [ -z "$FISH_PATH" ]; then
-#        echo "ERROR: Fish was not found."
-#        exit 1
-#    fi
+    if [ -z "$FISH_PATH" ]; then
+        echo "ERROR: Fish was not found."
+        exit 1
+    fi
 
-#    if ! grep -Fxq "$FISH_PATH" /etc/shells; then
-#        echo "Adding Fish to /etc/shells..."
-#        echo "$FISH_PATH" | sudo tee -a /etc/shells > /dev/null
-#    fi
+    if ! grep -Fxq "$FISH_PATH" /etc/shells; then
+        echo "Adding Fish to /etc/shells..."
+        echo "$FISH_PATH" | sudo tee -a /etc/shells > /dev/null
+    fi
 
-#    echo "Setting Fish as your default shell..."
-#    chsh -s "$FISH_PATH"
-#fi
+    echo "Setting Fish as your default shell..."
+    chsh -s "$FISH_PATH"
+fi
 
 # ------------------------------------------------------------
 # Enable system services

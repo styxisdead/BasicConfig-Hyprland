@@ -11,7 +11,8 @@
     "modules-left": [
         "custom/launcher",
         "hyprland/workspaces",
-        "wlr/taskbar"
+        "wlr/taskbar",
+        "custom/media"
     ],
 
     "modules-center": [
@@ -50,10 +51,19 @@
         ]
     },
 
+    "custom/media": {
+    "exec": "playerctl metadata --format '{{artist}} — {{title}}'",
+    "interval": 1,
+    "format": "󰝚 {}",
+    "on-click": "~/.config/waybar/scripts/media-launcher.sh",
+    "tooltip": false,
+    "max-length": 40
+    },
+
     "clock": {
         "format": "󰥔  {:%I:%M %p}",
         "format-alt": "󰃭  {:%A, %B %d, %Y}",
-        "tooltip": false
+        "tooltip": false,
     },
 
     "cpu": {
@@ -110,9 +120,10 @@
 
     "network": {
         "format-wifi": "󰖩  {essid}",
-        "format-ethernet": "󰈀  Connected",
+        "format-ethernet": "󰈀  Ethernet",
         "format-disconnected": "󰖪  Offline",
-        "tooltip-format": "{ifname}\n{ipaddr}/{cidr}"
+        "tooltip-format": "{ifname}\n{ipaddr}/{cidr}",
+        "on-click": "nm-connection-editor"
     },
 
     "tray": {

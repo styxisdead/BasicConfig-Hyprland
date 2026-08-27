@@ -1,0 +1,46 @@
+$background: {{ colors.background.default.hex }};
+$foreground: {{ colors.on_background.default.hex }};
+$accent: {{ colors.primary.default.hex }};
+$accent2: {{ colors.secondary.default.hex }};
+$surface: {{ colors.surface.default.hex }};
+$surface_variant: {{ colors.surface_variant.default.hex }};
+
+* {
+    all: unset;
+}
+
+.media-popup {
+    background: {{ colors.background.default.rgba | set_alpha: 0.72 }};
+    color: $foreground;
+    border: 1px solid $accent;
+    border-radius: 16px;
+    padding: 18px;
+}
+
+.media-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: $foreground;
+}
+
+.media-artist {
+    font-size: 13px;
+    color: $accent2;
+}
+
+.media-controls {
+    margin-top: 10px;
+}
+
+.media-button {
+    background: {{ colors.surface_variant.default.rgba | set_alpha: 0.55 }};
+    color: $foreground;
+    border: 1px solid $accent;
+    border-radius: 10px;
+    padding: 8px 14px;
+}
+
+.media-button:hover {
+    background: $accent;
+    color: $background;
+}

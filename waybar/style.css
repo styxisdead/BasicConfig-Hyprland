@@ -200,6 +200,10 @@ window#waybar {
     border-radius: 8px;
 }
 
+#custom-media {
+    padding: 0 12px;
+}
+
 /* =========================
    GTK CLEANUP
    ========================= */

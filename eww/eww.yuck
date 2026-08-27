@@ -1,0 +1,59 @@
+(defpoll media_title
+  :interval "500ms"
+  `playerctl metadata --format '{{title}}' 2>/dev/null`)
+
+(defpoll media_artist
+  :interval "500ms"
+  `playerctl metadata --format '{{artist}}' 2>/dev/null`)
+
+(defwidget media_popup []
+  (box
+    :class "media-popup"
+    :orientation "v"
+    :spacing 8
+
+    (label
+      :class "media-title"
+      :text media_title
+      :truncate "end"
+      :limit-width 40)
+
+    (label
+      :class "media-artist"
+      :text media_artist
+      :truncate "end"
+      :limit-width 40)
+
+    (box
+      :class "media-controls"
+      :orientation "h"
+      :spacing 12
+      :halign "center"
+
+      (button
+        :class "media-button"
+        :onclick "playerctl previous"
+        "⏮")
+
+      (button
+        :class "media-button"
+        :onclick "playerctl play-pause"
+        "▶ / ⏸")
+
+      (button
+        :class "media-button"
+        :onclick "playerctl next"
+        "⏭"))))
+
+(defwindow media_popup
+  :monitor 0
+  :geometry (geometry
+    :x "12px"
+    :y "54px"
+    :width "360px"
+    :height "120px"
+    :anchor "top left")
+  :stacking "fg"
+  :transparent true
+
+  (media_popup))

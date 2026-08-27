@@ -18,6 +18,7 @@ if hl.plugin.hyprglass then
     hg.layer("mako", { preset = "glass", mask_threshold = 0.03 })
     hg.layer("fuzzel", { preset = "glass", mask_threshold = 0.03 })
     hg.layer("quickshell:bezel", { preset = "glass", mask_threshold = 0.3 })
+    hg.layer("gtk-layer-shell", { preset = "glass", mask_threshold = 0.3 })
 
     hg.layer("debug-panel", { exclude = true })
 

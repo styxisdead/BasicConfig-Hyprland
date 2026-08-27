@@ -1,0 +1,44 @@
+$background: #101418;
+$foreground: #e0e2e8;
+$accent: #9ecafc;
+$accent2: #bac8db;
+$surface: #101418;
+$surface_variant: #42474e;
+
+* {
+    all: unset;
+}
+
+.media-popup {
+    background: $background;
+    color: $foreground;
+    border: 2px solid $accent;
+    border-radius: 12px;
+    padding: 18px;
+}
+
+.media-title {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.media-artist {
+    font-size: 13px;
+    color: $accent2;
+}
+
+.media-controls {
+    margin-top: 8px;
+}
+
+.media-button {
+    background: $surface_variant;
+    color: $foreground;
+    border-radius: 8px;
+    padding: 8px 14px;
+}
+
+.media-button:hover {
+    background: $accent;
+    color: $background;
+}

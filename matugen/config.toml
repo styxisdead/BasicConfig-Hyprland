@@ -32,3 +32,8 @@ post_hook = 'makoctl reload'
 [templates.rofi-wallpaper]
 input_path = '~/.config/matugen/templates/rofi-wallpaper.rasi'
 output_path = '~/.config/rofi/wallpaper.rasi'
+
+[templates.eww]
+input_path = '~/.config/matugen/templates/eww.scss'
+output_path = '~/.config/eww/eww.scss'
+post_hook = 'eww reload'
