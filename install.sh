@@ -9,44 +9,44 @@ SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 CONFIG_DIR="$HOME/.config"
 BACKUP_DIR="$HOME/hypr_backup_$(date +%Y%m%d_%H%M%S)"
 
-PACKAGES=(
-    hyprland
-    waybar
-    rofi
-    kitty
-    hyprpaper
-    mako
-    nemo
-    matugen
-    hyprpolkitagent
+# PACKAGES=(
+#    hyprland
+#    waybar
+#    rofi
+#    kitty
+#    hyprpaper
+#    mako
+#    nemo
+#    matugen
+#    hyprpolkitagent
 
-    pipewire
-    pipewire-pulse
-    wireplumber
+#    pipewire
+#    pipewire-pulse
+#    wireplumber
 
-    grim
-    slurp
-    wl-clipboard
+#    grim
+#    slurp
+#    wl-clipboard
 
-    ttf-font-awesome
-    ttf-jet-brains-mono
+#    ttf-font-awesome
+#    ttf-jet-brains-mono
 
-    qt5-wayland
-    qt6-wayland
-    xdg-desktop-portal-hyprland
+#    qt5-wayland
+#    qt6-wayland
+#    xdg-desktop-portal-hyprland
 
-    btop
-    cava
-    spotify-player
-    fastfetch
-    fuzzel
+#    btop
+#    cava
+#    spotify-player
+#    fastfetch
+#    fuzzel
 
-    gtk3
-    gtk4
-    firefox
-    qt6ct
+#    gtk3
+#    gtk4
+#    firefox
+#    qt6ct
 
-    fish
+#    fish
 )
 
 echo "==========================================="
@@ -69,9 +69,9 @@ fi
 # Install packages
 # ------------------------------------------------------------
 
-echo "Installing system dependencies..."
+# echo "Installing system dependencies..."
 
-sudo pacman -Syu --needed "${PACKAGES[@]}"
+# sudo pacman -Syu --needed "${PACKAGES[@]}"
 
 # ------------------------------------------------------------
 # Create ~/.config
@@ -158,28 +158,28 @@ fi
 # Fish shell
 # ------------------------------------------------------------
 
-echo
-read -r -p "Do you want to set Fish as your default shell? [y/N]: " REPLY
+# echo
+# read -r -p "Do you want to set Fish as your default shell? [y/N]: " REPLY
 
 echo
 
-if [[ "$REPLY" =~ ^[Yy]$ ]]; then
+# if [[ "$REPLY" =~ ^[Yy]$ ]]; then
 
-    FISH_PATH="$(command -v fish)"
+#    FISH_PATH="$(command -v fish)"
 
-    if [ -z "$FISH_PATH" ]; then
-        echo "ERROR: Fish was not found."
-        exit 1
-    fi
+#    if [ -z "$FISH_PATH" ]; then
+#        echo "ERROR: Fish was not found."
+#        exit 1
+#    fi
 
-    if ! grep -Fxq "$FISH_PATH" /etc/shells; then
-        echo "Adding Fish to /etc/shells..."
-        echo "$FISH_PATH" | sudo tee -a /etc/shells > /dev/null
-    fi
+#    if ! grep -Fxq "$FISH_PATH" /etc/shells; then
+#        echo "Adding Fish to /etc/shells..."
+#        echo "$FISH_PATH" | sudo tee -a /etc/shells > /dev/null
+#    fi
 
-    echo "Setting Fish as your default shell..."
-    chsh -s "$FISH_PATH"
-fi
+#    echo "Setting Fish as your default shell..."
+#    chsh -s "$FISH_PATH"
+#fi
 
 # ------------------------------------------------------------
 # Enable system services
