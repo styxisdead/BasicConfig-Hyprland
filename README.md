@@ -21,7 +21,7 @@ You will need:
 - `mako`
 - `matugen`
 - `hyprpaper`
-- `hyprglass plugin`
+- `hyprglass plugin` --> [https://github.com/hyprnux/hyprglass](url)
 - `btop`
 
 ## Installation
