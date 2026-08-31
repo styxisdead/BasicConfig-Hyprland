@@ -24,6 +24,7 @@
         "cpu",
         "memory",
         "pulseaudio",
+        "custom/bluetooth",
         "network",
         "tray"
     ],
@@ -54,7 +55,7 @@
     "custom/media": {
     "exec": "playerctl metadata --format '{{artist}} — {{title}}'",
     "interval": 1,
-    "format": "󰝚 {}",
+    "format": "󰝚  {}",
     "on-click": "~/.config/waybar/scripts/media-launcher.sh",
     "tooltip": false,
     "max-length": 40
@@ -116,6 +117,16 @@
         "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
         "on-click-right": "pavucontrol",
         "tooltip-format": "{desc}\nVolume: {volume}%"
+    },
+
+    "custom/bluetooth": {
+    "exec": "~/.config/waybar/scripts/bluetooth.sh",
+    "interval": 3,
+    "return-type": "json",
+    "format": "{}",
+    "on-click": "blueman-manager",
+    "on-click-right": "~/.config/waybar/scripts/bluetooth-toggle.sh",
+    "tooltip": true
     },
 
     "network": {

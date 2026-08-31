@@ -38,7 +38,7 @@ if hl.plugin.hyprglass then
         adaptive_boost = 0.5
     })
 
-    hg.preset("apple", {
+    hg.preset("glass2", {
         glass_opacity= 0.66,
         blur_strength = 2.2,
         blur_iterations = 3,

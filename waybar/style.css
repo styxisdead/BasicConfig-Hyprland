@@ -26,6 +26,7 @@ window#waybar {
 #cpu,
 #memory,
 #pulseaudio,
+#custom-bluetooth,
 #network,
 #tray {
     background: alpha(@background, 0.45);
@@ -165,6 +166,7 @@ window#waybar {
 #memory,
 #mpris,
 #pulseaudio,
+#custom-bluetooth,
 #network {
     color: @foreground;
 }
@@ -202,6 +204,22 @@ window#waybar {
 
 #custom-media {
     padding: 0 12px;
+}
+
+/* =========================
+   BLUETOOTH
+   ========================= */
+
+#custom-bluetooth.connected {
+    color: @accent;
+}
+
+#custom-bluetooth.off {
+    color: alpha(@foreground, 0.45);
+}
+
+#custom-bluetooth:hover {
+    background: alpha(@accent, 0.20);
 }
 
 /* =========================

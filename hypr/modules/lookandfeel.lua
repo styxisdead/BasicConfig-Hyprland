@@ -3,7 +3,7 @@ local colors = dofile(os.getenv("HOME") .. "/.config/hypr/matugen-colors.lua")
 hl.config({
     general = {
         gaps_in  = 5,
-        gaps_out = 20,
+        gaps_out = 10,
 
         border_size = 2,
 
