@@ -118,6 +118,9 @@ git pull
 > **Warning:** Running the installer again will replace existing configuration files after creating a backup. Make sure you have saved any personal configuration changes before doing so.
 
 thats it.
+
+## NOTE: There are Cappuccin Mocha wallpapers integrated into the systems wallpaper selection as of 8/29/26. Please remember to update their directory in the config files so they display properly!! 
+
 # EXAMPLES:
 <img width="3840" height="1080" alt="2026-08-25_16-20-39" src="https://github.com/user-attachments/assets/94279bb8-c3cf-4386-9692-4ab2732e6e62" />
 <img width="3840" height="1080" alt="2026-08-25_22-31-13" src="https://github.com/user-attachments/assets/169ea2f3-6128-4f94-9a30-5878fa9005f8" />
