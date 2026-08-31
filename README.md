@@ -23,6 +23,7 @@ You will need:
 - `hyprpaper`
 - `hyprglass plugin` --> [https://github.com/hyprnux/hyprglass](url)
 - `btop`
+- `neovim`
 
 ## Installation
 
@@ -32,7 +33,7 @@ You will need:
 sudo pacman -S git
 ```
 ```bash
-sudo pacman -S kitty fish fastfetch rofi waybar fuzzel mako matugen hyprpaper btop
+sudo pacman -S kitty fish fastfetch rofi waybar fuzzel mako matugen hyprpaper btop nvim
 ```
 
 
