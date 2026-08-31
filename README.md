@@ -33,7 +33,7 @@ You will need:
 sudo pacman -S git
 ```
 ```bash
-sudo pacman -S kitty fish fastfetch rofi waybar fuzzel mako matugen hyprpaper btop nvim
+sudo pacman -S kitty fish fastfetch rofi waybar fuzzel mako matugen hyprpaper btop neovim
 ```
 
 
